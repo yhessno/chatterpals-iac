@@ -1,0 +1,40 @@
+{
+    "name": "Chatterpals IaC environment",
+  
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "chatterpals-iac:latest",
+  
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+  
+    "customizations": {
+      "vscode": {
+        "settings": {},
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance"
+        ]
+      }
+    },
+  
+    "forwardPorts": [5678],
+    // ,
+  
+    // "portsAttributes": {
+    //   "9000": {
+    //     "label": "Hello Remote World",
+    //     "onAutoForward": "notify"
+    //   }
+    // },
+  
+    // "postCreateCommand": "yarn install"
+  
+    "remoteUser": "root",
+    "runArgs": [
+      "-v",
+      "/var/run/docker.sock:/var/run/docker.sock",
+      "--runtime=nvidia",
+      "--gpus",
+      "all"
+    ]
+  }
